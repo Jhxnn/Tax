@@ -16,6 +16,27 @@ public class Imposto extends PanacheEntityBase {
 
     private String descricao;
 
+    public Long getImpostoId() {
+        return impostoId;
+    }
 
+    public void setImpostoId(Long impostoId) {
+        this.impostoId = impostoId;
+    }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
 }
