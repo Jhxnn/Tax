@@ -2,6 +2,7 @@ package services;
 
 
 import dtos.AliquotaDto;
+import dtos.ImpostoDto;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import models.Aliquota;
@@ -22,5 +23,12 @@ public class ImpostoService {
     }
     public Imposto findById(long id){
         return impostoRepository.findById(id);
+    }
+    public Imposto createImposto(ImpostoDto impostoDto){
+        Imposto imposto = new Imposto();
+        imposto.setDescricao(impostoDto.descricao());
+        imposto.setNome(impostoDto.nome());
+        impostoRepository.persist(imposto);
+        return imposto;
     }
 }
