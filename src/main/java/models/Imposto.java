@@ -9,7 +9,8 @@ public class Imposto extends PanacheEntityBase {
 
     @Id
     @Column(name = "id")
-    private int impostoId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long impostoId;
 
     private String nome;
 

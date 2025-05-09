@@ -9,7 +9,8 @@ public class Aliquota extends PanacheEntityBase{
 
     @Id
     @Column(name = "id")
-    private int aliquotaId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long aliquotaId;
 
     @ManyToOne
     @JoinColumn(referencedColumnName = "id", name ="imposto_id")
