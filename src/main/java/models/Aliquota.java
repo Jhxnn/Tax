@@ -8,27 +8,42 @@ import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 public class Aliquota extends PanacheEntityBase{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private Long aliquotaId;
+    private int aliquotaId;
 
     @ManyToOne
     @JoinColumn(referencedColumnName = "id", name ="imposto_id")
     public Imposto imposto;
 
+    @Column(name = "uf_origem")
     public String ufOrigem;
+
+    @Column(name = "uf_destino")
     public String ufDestino;
+
+    @Column(name = "municipio_destino")
     public String municipioDestino;
+
+    @Column(name = "tipo_operacao")
     public String tipoOperacao;
+
     public String categoria;
 
-    public Long getAliquotaId() {
-        return aliquotaId;
+    private double percentual;
+
+
+
+
+
+    public double getPercentual() {
+        return percentual;
     }
 
-    public void setAliquotaId(Long aliquotaId) {
-        this.aliquotaId = aliquotaId;
+    public void setPercentual(double percentual) {
+        this.percentual = percentual;
     }
+
+
 
     public Imposto getImposto() {
         return imposto;

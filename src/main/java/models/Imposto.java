@@ -8,21 +8,14 @@ import jakarta.persistence.*;
 public class Imposto extends PanacheEntityBase {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private Long impostoId;
+    private int impostoId;
 
     private String nome;
 
     private String descricao;
 
-    public Long getImpostoId() {
-        return impostoId;
-    }
 
-    public void setImpostoId(Long impostoId) {
-        this.impostoId = impostoId;
-    }
 
     public String getNome() {
         return nome;
