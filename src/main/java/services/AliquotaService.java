@@ -1,6 +1,9 @@
 package services;
 
 import dtos.AliquotaDto;
+import dtos.CalculoICMSDto;
+import dtos.CalculoIPIDto;
+import dtos.CalculoISSDto;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import models.Aliquota;
@@ -64,4 +67,20 @@ public class AliquotaService {
         aliquotaRepository.persist(aliquota);
         return aliquota;
     }
+
+    public double retornarPercentualIPI(CalculoIPIDto calculoIPIDto){
+        Aliquota aliquota = aliquotaRepository.buscarIpi(calculoIPIDto.tipoOperacao(), calculoIPIDto.categoria());
+        return  aliquota.getPercentual();
+    }
+
+    public double retornarPercentualICSM(CalculoICMSDto calculoICMSDto){
+        Aliquota aliquota = aliquotaRepository.buscarIcms(calculoICMSDto.ufOrigem(), calculoICMSDto.ufDestino(), calculoICMSDto.tipoOperacao(), calculoICMSDto.categoria());
+        return  aliquota.getPercentual();
+    }
+
+    public double retornarPercentualISS(CalculoISSDto calculoISSDto){
+        Aliquota aliquota = aliquotaRepository.buscarIss(calculoISSDto.municipioDestino(), calculoISSDto.tipoOperacao(), calculoISSDto.categoria());
+        return  aliquota.getPercentual();
+    }
+
 }
