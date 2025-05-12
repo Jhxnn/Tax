@@ -4,17 +4,23 @@ Como rodar o projeto
 git clone https://github.com/Jhxnn/seu-projeto-quarkus.git
 cd tax
 ``
+
 3. Rode o projeto em modo dev
+
+   
 ``
 mvn quarkus:dev
 ``
+
 5. Rode os testes
+
 ``
 mvn test
 ``
-🌐 Acesse os endpoints
-📊 Calcular ICMS, IPI ou ISS
+
+6.Acesse os endpoints
 Exemplo de endpoint para ICMS:
+
 ``
 GET http://localhost:8080/calculo/icms
 Content-Type: application/json
@@ -28,7 +34,9 @@ Content-Type: application/json
   "valorProduto": 1000
 }
 ``
+
 Exemplo de resposta:
+
 
 ``
 {
