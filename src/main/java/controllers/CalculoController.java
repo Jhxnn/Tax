@@ -11,6 +11,7 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
 import services.CalculoService;
 
@@ -24,16 +25,19 @@ public class CalculoController {
 
     @GET
     @Path("/ICMS")
+    @Operation(description = "Realiza o calculo do imposto ICMS")
     public Response calculoIcms(@RequestBody CalculoICMSDto calculoICMSDto){
         return Response.ok(calculoService.calcularICMS(calculoICMSDto)).build();
     }
     @GET
     @Path("/IPI")
+    @Operation(description = "Realiza o calculo do imposto IPI")
     public Response calculoIpi(@RequestBody CalculoIPIDto calculoIPIDto){
         return Response.ok(calculoService.calcularIPI(calculoIPIDto)).build();
     }
     @GET
     @Path("/ISS")
+    @Operation(description = "Realiza o calculo do imposto ISS")
     public Response calculoIss(@RequestBody CalculoISSDto calculoISSDto){
         return Response.ok(calculoService.calcularISS(calculoISSDto)).build();
     }
