@@ -1,45 +1,24 @@
 Como rodar o projeto
+
 1. Clone o repositório
-``
-git clone https://github.com/Jhxnn/seu-projeto-quarkus.git
-``
 
-3. Rode o projeto em modo dev
+``git clone https://github.com/Jhxnn/seu-projeto-quarkus.git``
 
-   
-``
-mvn quarkus:dev
-``
+2. Rode o projeto em modo dev
 
-5. Rode os testes
+``mvn quarkus:dev``
 
-``
-mvn test
-``
+3. Rode os testes
 
-6.Acesse os endpoints
+``mvn test``
+
+
+4.Acesse os endpoints
 Exemplo de endpoint para ICMS:
-
 
 GET http://localhost:8080/calculo/icms
 Content-Type: application/json
 
+![correto 2](https://github.com/user-attachments/assets/037f8f3c-2937-4e6e-9eca-a068d84bd77b)
 
-{
-  "ufOrigem": "SP",
-  "ufDestino": "SC",
-  "tipoOperacao": "VENDA",
-  "categoria": "eletronico",
-  "valorProduto": 1000
-}
-
-
-Exemplo de resposta:
-
-
-
-{
-  "valorImposto": 170.0,
-  "percentual": 17.0
-}
 
