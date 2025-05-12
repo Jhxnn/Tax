@@ -16,8 +16,7 @@ Como rodar o projeto
 4.Acesse os endpoints
 Exemplo de endpoint para ICMS:
 
-GET http://localhost:8080/calculo/icms
-Content-Type: application/json
+http://localhost:8080/calculo/ICMS
 
 ![correto 2](https://github.com/user-attachments/assets/037f8f3c-2937-4e6e-9eca-a068d84bd77b)
 
