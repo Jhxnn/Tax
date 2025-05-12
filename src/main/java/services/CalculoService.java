@@ -3,6 +3,7 @@ package services;
 import dtos.CalculoICMSDto;
 import dtos.CalculoIPIDto;
 import dtos.CalculoISSDto;
+import dtos.ResponseDto;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
@@ -16,18 +17,18 @@ public class CalculoService {
     ImpostoService impostoService;
 
 
-    public double calcularICMS(CalculoICMSDto calculoICMSDto){
+    public ResponseDto calcularICMS(CalculoICMSDto calculoICMSDto){
         double percentual = aliquotaService.retornarPercentualICSM(calculoICMSDto) / 100;
-        return  calculoICMSDto.valorProduto() * percentual;
+        return new ResponseDto(calculoICMSDto.valorProduto() * percentual, percentual);
 
     }
-    public double calcularIPI(CalculoIPIDto calculoIPIDto){
+    public ResponseDto calcularIPI(CalculoIPIDto calculoIPIDto){
         double percentual = aliquotaService.retornarPercentualIPI(calculoIPIDto) / 100;
-        return calculoIPIDto.valorProduto() * percentual;
+        return new ResponseDto(calculoIPIDto.valorProduto() * percentual, percentual);
     }
-    public double calcularISS(CalculoISSDto calculoISSDto){
+    public ResponseDto calcularISS(CalculoISSDto calculoISSDto){
         double percentual = aliquotaService.retornarPercentualISS(calculoISSDto) / 100;
-        return calculoISSDto.valorServico() * percentual;
+        return new ResponseDto(calculoISSDto.valorServico() * percentual, percentual);
     }
 
 
