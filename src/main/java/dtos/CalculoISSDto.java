@@ -1,4 +1,4 @@
 package dtos;
 
-public record CalculoISSDto(String municipioDestino, String tipoOperacao, String categoria) {
+public record CalculoISSDto(String municipioDestino, String tipoOperacao, String categoria, double valorServico) {
 }

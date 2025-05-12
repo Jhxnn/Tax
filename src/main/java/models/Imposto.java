@@ -16,8 +16,6 @@ public class Imposto extends PanacheEntityBase {
 
     private String descricao;
 
-
-
     public String getNome() {
         return nome;
     }

@@ -16,18 +16,18 @@ public class CalculoService {
     ImpostoService impostoService;
 
 
-    public double calcularICMS(CalculoICMSDto calculoICMSDto, double valorProduto){
+    public double calcularICMS(CalculoICMSDto calculoICMSDto){
         double percentual = aliquotaService.retornarPercentualICSM(calculoICMSDto) / 100;
-        return  valorProduto * percentual;
+        return  calculoICMSDto.valorProduto() * percentual;
 
     }
-    public double calcularIPI(CalculoIPIDto calculoIPIDto, double valoProduto){
+    public double calcularIPI(CalculoIPIDto calculoIPIDto){
         double percentual = aliquotaService.retornarPercentualIPI(calculoIPIDto) / 100;
-        return valoProduto * percentual;
+        return calculoIPIDto.valorProduto() * percentual;
     }
-    public double calcularISS(CalculoISSDto calculoISSDto, double valorServico){
+    public double calcularISS(CalculoISSDto calculoISSDto){
         double percentual = aliquotaService.retornarPercentualISS(calculoISSDto) / 100;
-        return valorServico * percentual;
+        return calculoISSDto.valorServico() * percentual;
     }
 
 

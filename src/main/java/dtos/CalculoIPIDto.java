@@ -1,4 +1,4 @@
 package dtos;
 
-public record CalculoIPIDto(String tipoOperacao, String categoria) {
+public record CalculoIPIDto(String tipoOperacao, String categoria, double valorProduto) {
 }
