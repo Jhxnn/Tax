@@ -2,6 +2,8 @@ package controllers;
 
 
 import dtos.CalculoICMSDto;
+import dtos.CalculoIPIDto;
+import dtos.CalculoISSDto;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
@@ -23,7 +25,17 @@ public class CalculoController {
     @GET
     @Path("/ICMS")
     public Response calculoIcms(@RequestBody CalculoICMSDto calculoICMSDto){
-
+        return Response.ok(calculoService.calcularICMS(calculoICMSDto)).build();
+    }
+    @GET
+    @Path("/IPI")
+    public Response calculoIpi(@RequestBody CalculoIPIDto calculoIPIDto){
+        return Response.ok(calculoService.calcularIPI(calculoIPIDto)).build();
+    }
+    @GET
+    @Path("/ISS")
+    public Response calculoIss(@RequestBody CalculoISSDto calculoISSDto){
+        return Response.ok(calculoService.calcularISS(calculoISSDto)).build();
     }
 
 
