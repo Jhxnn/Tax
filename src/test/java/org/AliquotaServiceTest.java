@@ -52,11 +52,11 @@ class AliquotaServiceTest {
     }
     @Test
     void testRetornarPercentualISS(){
-        CalculoISSDto dto = new CalculoISSDto("Joinville","VENDA", "tecnologia",1000);
+        CalculoISSDto dto = new CalculoISSDto("Joinville","SERVICO", "tecnologia",1000);
         Aliquota aliquota = new Aliquota();
         aliquota.setPercentual(2.5);
 
-        when(aliquotaRepository.buscarIss("Joinville","VENDA", "tecnologia")).thenReturn(aliquota);
+        when(aliquotaRepository.buscarIss("Joinville","SERVICO", "tecnologia")).thenReturn(aliquota);
 
         double percentual = aliquotaService.retornarPercentualISS(dto);
 

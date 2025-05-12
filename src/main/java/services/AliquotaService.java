@@ -70,16 +70,25 @@ public class AliquotaService {
 
     public double retornarPercentualIPI(CalculoIPIDto calculoIPIDto){
         Aliquota aliquota = aliquotaRepository.buscarIpi(calculoIPIDto.tipoOperacao(), calculoIPIDto.categoria());
+        if (aliquota == null) {
+            throw new IllegalArgumentException("Alíquota IPI não encontrada para os parâmetros informados.");
+        }
         return  aliquota.getPercentual();
     }
 
     public double retornarPercentualICSM(CalculoICMSDto calculoICMSDto){
         Aliquota aliquota = aliquotaRepository.buscarIcms(calculoICMSDto.ufOrigem(), calculoICMSDto.ufDestino(), calculoICMSDto.tipoOperacao(), calculoICMSDto.categoria());
+        if (aliquota == null) {
+            throw new IllegalArgumentException("Alíquota ICMS não encontrada para os parâmetros informados.");
+        }
         return  aliquota.getPercentual();
     }
 
     public double retornarPercentualISS(CalculoISSDto calculoISSDto){
         Aliquota aliquota = aliquotaRepository.buscarIss(calculoISSDto.municipioDestino(), calculoISSDto.tipoOperacao(), calculoISSDto.categoria());
+        if (aliquota == null) {
+            throw new IllegalArgumentException("Alíquota ISS não encontrada para os parâmetros informados.");
+        }
         return  aliquota.getPercentual();
     }
 

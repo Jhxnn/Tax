@@ -1,31 +1,50 @@
 package org;
 
 import dtos.CalculoICMSDto;
-import io.quarkus.test.junit.QuarkusIntegrationTest;
-import io.restassured.internal.RestAssuredResponseOptionsImpl;
-import jakarta.inject.Inject;
+import dtos.CalculoIPIDto;
+import dtos.CalculoISSDto;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import services.AliquotaService;
 import services.CalculoService;
 
 import static io.restassured.RestAssured.when;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.any;
 
-@QuarkusIntegrationTest
+@ExtendWith(MockitoExtension.class)
 class CalculoServiceTest {
 
-    @Inject
-    AliquotaService aliquotaService;
+    @InjectMocks
+    private CalculoService calculoService;
 
-    @Inject
-    CalculoService calculoService;
+    @Mock
+    private AliquotaService aliquotaService;
+
 
     @Test
     void testCalcularICMS() {
-        when(aliquotaService.retornarPercentualICSM(any(CalculoICMSDto.class))).thenReturn(18.0);
-        double resultado = calculoService.calcularICMS();
-        assertEquals(180.0, resultado);
+        CalculoICMSDto dto = new CalculoICMSDto("SP", "SC", "VENDA", "eletronico", 1000);
+        double percentual = aliquotaService.retornarPercentualICSM(dto) / 100;
+        assertEquals(170.0, dto.valorProduto() * percentual, 0.01);  // Tolerância de 0.01
+    }
+
+    @Test
+    void testCalcularIPI() {
+        CalculoIPIDto dto = new CalculoIPIDto("VENDA", "eletronico", 1000);
+
+        double percentual = aliquotaService.retornarPercentualIPI(dto) / 100;
+        assertEquals(150.0, dto.valorProduto() * percentual, 0.01);
+    }
+
+    @Test
+    void testCalcularISS() {
+        CalculoISSDto dto = new CalculoISSDto("Joinville", "SERVICO", "tecnologia", 1000);
+
+        double percentual = aliquotaService.retornarPercentualISS(dto) / 100;
+        assertEquals(25.0, dto.valorServico() * percentual, 0.01);
     }
 
 
